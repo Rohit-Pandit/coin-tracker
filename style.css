@@ -1,0 +1,16 @@
+
+.nav-bar{
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.nav{
+    
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    
+}
