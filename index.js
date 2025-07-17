@@ -1,9 +1,15 @@
+
  let data=[];
  async function getData() {
     const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
     try {
         const res = await fetch(url);
         data = await res.json();
+        
+    if (!data || data.length === 0) {
+        console.warn("⚠️ Data is empty or not yet loaded.");
+        return;
+    }
         renderTable(data);
         
     } catch (error) {
@@ -45,6 +51,27 @@ function percentage(){
     renderTable(sorted);
 }
 
+
+
+function filterDataBasedOnInput(){
+    let inputVal = document.getElementById("name").value.toLowerCase();
+   
+    const filterData = data.filter((coin)=> coin.name.toLowerCase().includes(inputVal));
+    renderTable(filterData);
+}
+
+function debounce(func, delay) {
+    let timeout;
+    return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+const debouncedFilter = debounce(filterDataBasedOnInput, 300);
+
+
 window.onload = ()=>{
     getData();
+    document.getElementById("name").addEventListener("input", debouncedFilter);
 }
