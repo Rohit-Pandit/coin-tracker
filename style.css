@@ -5,6 +5,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
     
 }
 .nav{
@@ -24,3 +31,19 @@
       border: 1px solid #ccc;
       text-align: center;
     }
+
+    #name {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#btn button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
